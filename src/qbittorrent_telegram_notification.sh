@@ -11,7 +11,7 @@ TORRENT_NAME="$1"
 
 # Notification message
 # If you need a line break, use "%0A" instead of "\n".
-MESSAGE="<strong>Download Completed</strong>%0A${TORRENT_NAME}%0A"
+MESSAGE="%3Cstrong%3EDownload%20Completed%3C%2Fstrong%3E%0A${TORRENT_NAME}%0A"
 
 # Prepares the request payload
 PAYLOAD="https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${MESSAGE}&parse_mode=HTML"
