@@ -1,2 +1,0 @@
-BOT_TOKEN="0"
-CHAT_ID="0"

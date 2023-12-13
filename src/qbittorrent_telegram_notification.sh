@@ -4,9 +4,13 @@
 BASEDIR=$(dirname "$0")
 source "${BASEDIR}/bot_creds.sh"
 
-# Extract specific arguments if needed
+# Define the Initial Text Used in the Bot Message
+MESSAGE_TEXT="✅ Download Completed "
+
+# Receive specific arguments from Script Execution
 TORRENT_NAME="$1"
 TORRENT_SIZE_BYTES="$2"
+
 
 # Convert size from bytes to MB or GB as appropriate
 if [ $TORRENT_SIZE_BYTES -lt 1073741824 ]; then
@@ -21,7 +25,7 @@ fi
 
 # Notification message
 # If you need a line break, use "%0A" instead of "\n".
-MESSAGE="✅ ${TORRENT_NAME} [${TORRENT_SIZE} ${SIZE_UNIT}]" 
+MESSAGE="${MESSAGE_TEXT} ${TORRENT_NAME} [${TORRENT_SIZE} ${SIZE_UNIT}]" 
 
 # Prepares the request url
 TG_WEBHOOK_URL="https://api.telegram.org/bot${BOT_TOKEN}/sendMessage"
@@ -37,4 +41,5 @@ curl -S -X POST \
   "${TG_WEBHOOK_URL}" -w "\n" | tee -a "${BASEDIR}/notificationsLog.txt"
 
 # Prints an info message in the console
+TR_TIME_LOCALTIME=$(date)
 echo "[${TR_TIME_LOCALTIME}]-[${TORRENT_NAME}] Download completed. Telegram notification sent."
