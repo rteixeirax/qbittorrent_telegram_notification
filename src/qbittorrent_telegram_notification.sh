@@ -1,23 +1,45 @@
 #!/bin/bash
 
-# Bot token
-BOT_TOKEN="ADD_YOUR_TELEGRAM_BOT_TOKEN"
+# Source the configuration file for BOT_TOKEN and CHAT_ID
+BASEDIR=$(dirname "$0")
+source "${BASEDIR}/bot_creds.sh"
 
-# Your chat id
-CHAT_ID="ADD_YOUR_TELEGRAM_CHAT_ID"
+# Define the Initial Text Used in the Bot Message
+MESSAGE_TEXT="✅ Download Completed "
 
-# Get variables from qbittorrent
+# Receive specific arguments from Script Execution
 TORRENT_NAME="$1"
+TORRENT_SIZE_BYTES="$2"
+
+
+# Convert size from bytes to MB or GB as appropriate
+if [ $TORRENT_SIZE_BYTES -lt 1073741824 ]; then
+    # If size is less than 1 GB, convert to MB
+    TORRENT_SIZE=$(echo "scale=2; $TORRENT_SIZE_BYTES/1048576" | bc)
+    SIZE_UNIT="MB"
+else
+    # Otherwise, convert to GB
+    TORRENT_SIZE=$(echo "scale=2; $TORRENT_SIZE_BYTES/1073741824" | bc)
+    SIZE_UNIT="GB"
+fi
 
 # Notification message
 # If you need a line break, use "%0A" instead of "\n".
-MESSAGE="%3Cstrong%3EDownload%20Completed%3C%2Fstrong%3E%0A${TORRENT_NAME}%0A"
+MESSAGE="${MESSAGE_TEXT} ${TORRENT_NAME} [${TORRENT_SIZE} ${SIZE_UNIT}]" 
 
-# Prepares the request payload
-PAYLOAD="https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${MESSAGE}&parse_mode=HTML"
+# Prepares the request url
+TG_WEBHOOK_URL="https://api.telegram.org/bot${BOT_TOKEN}/sendMessage"
+
+# Prepares the the directory for saving the logs
+BASEDIR=$(dirname "$0")
 
 # Sends the notification to the telegram bot and save the response content into the notificationsLog.txt
-curl -S -X POST "${PAYLOAD}" -w "\n\n" | tee -a notificationsLog.txt
+curl -S -X POST \
+  -d chat_id="${CHAT_ID}" \
+  -d text="${MESSAGE}" \
+  -d parse_mode="HTML" \
+  "${TG_WEBHOOK_URL}" -w "\n" | tee -a "${BASEDIR}/notificationsLog.txt"
 
-# Prints a info message in the console
-echo "[${TORRENT_NAME}] Download completed. Telegram notification sent."
+# Prints an info message in the console
+TR_TIME_LOCALTIME=$(date)
+echo "[${TR_TIME_LOCALTIME}]-[${TORRENT_NAME}] Download completed. Telegram notification sent."
