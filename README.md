@@ -1,10 +1,8 @@
 # Bash script that sends a message to the telegram bot after the qbittorrent finishes downloading a torrent.
 
-#### Bash script [here](https://github.com/rteixeirax/qbittorrent_telegram_notification/blob/master/src/qbittorrent_telegram_notification.sh)
-
 ### Instructions:
 
-* Create a folder to put the `qbittorrent_telegram_notification.sh` and `bot_credentials.sh` scripts
+* Create a folder to put the [qbittorrent_telegram_notification.sh](https://github.com/rteixeirax/qbittorrent_telegram_notification/blob/master/src/qbittorrent_telegram_notification.sh) and [bot_credentials.sh](https://github.com/rteixeirax/qbittorrent_telegram_notification/blob/master/src/bot_credentials.sh) scripts
     
     `sudo mkdir qbittorrent`
 
