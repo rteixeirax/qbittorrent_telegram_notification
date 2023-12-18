@@ -4,7 +4,7 @@
 
 ### Instructions:
 
-* Create a folder to put yout script
+* Create a folder to put the `qbittorrent_telegram_notification.sh` and `bot_credentials.sh` scripts
     
     `sudo mkdir qbittorrent`
 
