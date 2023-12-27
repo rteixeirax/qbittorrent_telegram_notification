@@ -2,7 +2,7 @@
 
 # Source the configuration file for BOT_TOKEN and CHAT_ID
 BASEDIR=$(dirname "$0")
-source "${BASEDIR}/bot_creds.sh"
+source "${BASEDIR}/bot_credentials.sh"
 
 # Define the Initial Text Used in the Bot Message
 MESSAGE_TEXT="✅ Download Completed "
