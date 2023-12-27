@@ -13,6 +13,7 @@
 * Allow the execution of the script
 
    `sudo chmod +rx qbittorrent_telegram_notification.sh`
+   `sudo chmod +rx bot_credentials.sh`
 
 * Open the qbittorrent settings on web UI, go to options, and add the script path along with the required parameters: `/qbittorrent/qbittorrent_telegram_notification.sh “%N” “%Z”`.
 
