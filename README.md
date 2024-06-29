@@ -20,7 +20,7 @@ Linux and MacOS supported (idk about Windows, why would you use bash on windows?
 
 * Do not that on MacOS you will have to add "sh" at the beginning of the path to ensure that it is launched which will look like this `sh /Users/%user%/Documents/qBittorrent/TelegramNotification/qbittorrent_telegram_notification.sh “%N” “%L” “%Z”`.
 
-**Note:** *You can add additional parameters inside the script by `$1`, `$2`, and so on. (i.e: `TORRENT_NAME="$1"`) $1 and $2 indicate the position of the paramaters in order so if the paramter you want is 4th in line after “%N” “%L” “%Z” you will specify `PARAMETER="$4"` 4 representing that it is fourth in line*
+**Note:** *You can add additional parameters inside the script by `$1`, `$2`, and so on (quickly serach for "!!!" in the file). (i.e: `TORRENT_NAME="$1"`) $1 and $2 indicate the position of the paramaters in order so if the paramter you want is 4th in line after “%N” “%L” “%Z” you will specify `PARAMETER="$4"` 4 representing that it is fourth in line*
 
 #### By default the following paramters are available:
 * `“%N”` = Name
