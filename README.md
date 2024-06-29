@@ -36,4 +36,4 @@ Linux and MacOS supported (idk about Windows, why would you use bash on windows?
 
   Finish.
 
-  I may or may not update this in the future for the messages to use a table instead however they look neat as is and accept long file names with spaces in between unlike the original crap.
+  *I may or may not update this in the future for the messages to use a table instead however they look neat as is and accept long file names with spaces in between unlike the original crap.*
