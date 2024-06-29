@@ -34,6 +34,8 @@ Linux and MacOS supported (idk about Windows, why would you use bash on windows?
 * Next you'll need to either go to the bot profile or create a group or channel, access this channel via web browser and on the URL you'll see something like `https://web.telegram.org/k/#XXXXXXXXX`
 * Copy everything after the # and paste it into the 2nd line that has the "CHAT_ID=" in the `bot_credentials.sh`, some blogs state that this should be a purely numeric value however if you have a special character this is fine too.
 
+**Note:** If you want the bot to DM you instead of creating a group chat, you'll need to message "Get My ID" on Telegram and click the button, the Telegram bot will give you the Chat ID which you will use in the credentials.
+
   Finish.
 
   *I may or may not update this in the future for the messages to use a table instead however they look neat as is and accept long file names with spaces in between unlike the original crap.*
