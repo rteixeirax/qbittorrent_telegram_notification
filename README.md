@@ -2,7 +2,7 @@
 
 Linux and MacOS supported (idk about Windows, why would you use bash on windows?)
 
-### Instructions:
+### qBittorrent Setup:
 
 * Create a directory for the scripts located in the release (can be downloaded raw), We'll assume that the directory is (MacOS Dir)
   
