@@ -55,6 +55,6 @@ curl -S -X POST \
 # Remove " | tee -a "${BASEDIR}/notificationsLog.txt" to stop generating a debug log
   "${TG_WEBHOOK_URL}" -w "\n" | tee -a "${BASEDIR}/notificationsLog.txt"
 
-# Prints an info message in the console / useless idk why he added this
+# Prints an info message in the console
 TR_TIME_LOCALTIME=$(date)
 echo "[${TR_TIME_LOCALTIME}]-[${TORRENT_NAME}] Download completed. Telegram notification sent."
