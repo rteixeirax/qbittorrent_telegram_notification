@@ -52,8 +52,8 @@ curl -S -X POST \
   -d chat_id="${CHAT_ID}" \
   -d text="${MESSAGE}" \
   -d parse_mode="HTML" \
-# Remove " | tee -a "${BASEDIR}/notificationsLog.txt" to stop generating a debug log
   "${TG_WEBHOOK_URL}" -w "\n" | tee -a "${BASEDIR}/notificationsLog.txt"
+    # Remove above " | tee -a "${BASEDIR}/notificationsLog.txt" to stop generating a debug log
 
 # Prints an info message in the console
 TR_TIME_LOCALTIME=$(date)
