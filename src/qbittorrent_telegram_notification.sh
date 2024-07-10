@@ -22,7 +22,7 @@ TORRENT_SIZE_BYTES=$(echo "$TORRENT_SIZE_BYTES" | sed 's/[“”"]//g')
 
 # Check if TORRENT_SIZE_BYTES is set and is a number (make sure we removed the special characters)
 if ! [[ "$TORRENT_SIZE_BYTES" =~ ^[0-9]+$ ]]; then
-    TORRENT_SIZE="Error: Invalid size"
+    TORRENT_SIZE="<b>ERROR</b> - Calculation Failed"
     SIZE_UNIT=""
 else
     # Convert size from bytes to MB or GB as appropriate
@@ -37,9 +37,18 @@ else
     fi
 fi
 
+# Escape special characters in the input variables
+escape() {
+    echo "$1" | sed 's/&/%26/g; s/ /%20/g; s/\n/%0A/g'
+}
+
+ESCAPED_TORRENT_NAME=$(escape "$TORRENT_NAME")
+ESCAPED_CATEGORY=$(escape "$CATEGORY")
+ESCAPED_CURRENT_TRACKER=$(escape "$CURRENT_TRACKER")
+
 # Notification message
 # If you need a line break, use "%0A" instead of "\n".
-MESSAGE="%0A${MESSAGE_TEXT} %0A${NAME_TEXT}${TORRENT_NAME} %0A${CATEGORY_TEXT}${CATEGORY} %0A${SIZE_TEXT}${TORRENT_SIZE} ${SIZE_UNIT} %0A${TRACKERS_TEXT}${CURRENT_TRACKER}"
+MESSAGE="%0A${MESSAGE_TEXT} %0A${NAME_TEXT}${ESCAPED_TORRENT_NAME} %0A${CATEGORY_TEXT}${ESCAPED_CATEGORY} %0A${SIZE_TEXT}${TORRENT_SIZE} ${SIZE_UNIT} %0A${TRACKERS_TEXT}${ESCAPED_CURRENT_TRACKER}"
 
 # Prepares the request url
 TG_WEBHOOK_URL="https://api.telegram.org/bot${BOT_TOKEN}/sendMessage"
